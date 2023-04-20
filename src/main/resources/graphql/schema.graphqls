@@ -1,12 +1,18 @@
 type Query {
     players: [Player]
     player(id: ID!): Player
-    playerStats(id: ID!): PlayerStats
+    playerByName(name: String!): Player
+
+    playerStats(id: ID!): [PlayerStats]
+    playerStatsByPlayerId(id: ID!): PlayerStats
+    playerStatsByName(name: String!): PlayerStats
 }
 
 type Mutation {
     addPlayer(name: String!): Player
-    removePlayer(id: ID!): Player
+    updatePlayer(id: ID!, name: String!): Player
+    removePlayer(id: ID!): ID
+    removePlayerByName(name: String!): ID
 
     updatePlayerStats(id: ID!, wins: Int!, losses: Int!, kills: Int!, deaths: Int!, assists: Int!, kda: Float!, money: Int!): PlayerStats
     resetPlayerStats(id: ID!): PlayerStats

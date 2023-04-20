@@ -1,0 +1,30 @@
+type Query {
+    players: [Player]
+    player(id: ID!): Player
+    playerStats(id: ID!): PlayerStats
+}
+
+type Mutation {
+    addPlayer(name: String!): Player
+    removePlayer(id: ID!): Player
+
+    updatePlayerStats(id: ID!, wins: Int!, losses: Int!, kills: Int!, deaths: Int!, assists: Int!, kda: Float!, money: Int!): PlayerStats
+    resetPlayerStats(id: ID!): PlayerStats
+}
+
+type Player {
+    id: ID!
+    name: String!
+    stats: PlayerStats
+}
+
+type PlayerStats {
+    id: ID!
+    wins: Int!
+    losses: Int!
+    kills: Int!
+    deaths: Int!
+    assists: Int!
+    kda: Float!
+    money: Int!
+}

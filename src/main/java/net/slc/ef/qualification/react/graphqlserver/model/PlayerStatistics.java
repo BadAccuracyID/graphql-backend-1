@@ -14,7 +14,7 @@ public class PlayerStatistics {
     private Long id;
 
     @OneToOne(targetEntity = Player.class, fetch = FetchType.LAZY)
-    private Long playerId;
+    private Player player;
 
     private int wins;
     private int losses;

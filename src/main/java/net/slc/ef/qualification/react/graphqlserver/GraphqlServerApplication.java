@@ -33,14 +33,14 @@ public class GraphqlServerApplication {
                 playerStats.setKills(1000);
                 playerStats.setDeaths(200);
                 playerStats.setAssists(500);
-                playerStats.setMoney(100000);
+                playerStats.setMoney(10000000);
                 playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
             });
 
             playerService.getPlayerByName("sh_likes_to_win").ifPresent(player -> {
                 PlayerStats playerStats = new PlayerStats();
                 playerStats.setPlayer(player);
-                playerStats.setWins(1000);
+                playerStats.setWins(10000);
                 playerStats.setLosses(1);
                 playerStats.setKills(10000);
                 playerStats.setDeaths(2000);
@@ -53,7 +53,7 @@ public class GraphqlServerApplication {
                 PlayerStats playerStats = new PlayerStats();
                 playerStats.setPlayer(player);
                 playerStats.setWins(1);
-                playerStats.setLosses(1000);
+                playerStats.setLosses(10000);
                 playerStats.setKills(2000);
                 playerStats.setDeaths(10000);
                 playerStats.setAssists(5000);
@@ -68,7 +68,7 @@ public class GraphqlServerApplication {
                 playerStats.setLosses(18);
                 playerStats.setKills(1000);
                 playerStats.setDeaths(200);
-                playerStats.setAssists(5000);
+                playerStats.setAssists(50000);
                 playerStats.setMoney(100000);
                 playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
             });
@@ -79,7 +79,7 @@ public class GraphqlServerApplication {
                 playerStats.setWins(100);
                 playerStats.setLosses(18);
                 playerStats.setKills(1000);
-                playerStats.setDeaths(5000);
+                playerStats.setDeaths(50000);
                 playerStats.setAssists(200);
                 playerStats.setMoney(100000);
                 playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
@@ -90,7 +90,7 @@ public class GraphqlServerApplication {
                 playerStats.setPlayer(player);
                 playerStats.setWins(100);
                 playerStats.setLosses(18);
-                playerStats.setKills(5000);
+                playerStats.setKills(50000);
                 playerStats.setDeaths(200);
                 playerStats.setAssists(1000);
                 playerStats.setMoney(100000);

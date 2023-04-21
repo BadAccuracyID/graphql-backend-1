@@ -26,6 +26,11 @@ public class PlayerStatisticsService {
     }
 
     @Transactional
+    public Iterable<Player> getTopPlayersByWins(Integer limit) {
+        return playerStatisticsRepository.findTopPlayersByWins(limit);
+    }
+
+    @Transactional
     public Optional<PlayerStatistics> getPlayerStatistics(Long id) {
         return playerStatisticsRepository.findById(id);
     }

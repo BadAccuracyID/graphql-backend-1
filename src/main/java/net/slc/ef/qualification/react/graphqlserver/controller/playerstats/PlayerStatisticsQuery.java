@@ -1,5 +1,6 @@
 package net.slc.ef.qualification.react.graphqlserver.controller.playerstats;
 
+import net.slc.ef.qualification.react.graphqlserver.model.Player;
 import net.slc.ef.qualification.react.graphqlserver.model.PlayerStatistics;
 import net.slc.ef.qualification.react.graphqlserver.service.PlayerStatisticsService;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -20,6 +21,11 @@ public class PlayerStatisticsQuery {
     @QueryMapping
     public Iterable<PlayerStatistics> playerStats() {
         return playerStatisticsService.getAllPlayerStatistics();
+    }
+
+    @QueryMapping
+    public Iterable<Player> topPlayersByWins(@Argument int limit) {
+        return playerStatisticsService.getTopPlayersByWins(limit);
     }
 
     @QueryMapping

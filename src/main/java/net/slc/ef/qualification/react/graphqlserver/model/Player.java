@@ -14,7 +14,7 @@ public class Player {
     private Long id;
     private String name;
 
-    @OneToOne(targetEntity = PlayerStatistics.class, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private PlayerStatistics playerStatistics;
 
 

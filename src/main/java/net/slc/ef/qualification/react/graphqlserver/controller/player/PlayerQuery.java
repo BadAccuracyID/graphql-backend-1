@@ -24,7 +24,7 @@ public class PlayerQuery {
 
     @QueryMapping
     public Optional<Player> player(@Argument Long id) {
-        return playerService.getPlayer(id);
+        return playerService.getPlayerById(id);
     }
 
     @QueryMapping

@@ -24,6 +24,7 @@ public class GraphqlServerApplication {
             Long id = playerService.createPlayer(player).getId();
 
             PlayerStatistics playerStatistics = playerStatisticsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
+            playerStatistics.setPlayer(player);
             playerStatistics.setWins(100);
             playerStatistics.setLosses(18);
             playerStatistics.setKills(1000);

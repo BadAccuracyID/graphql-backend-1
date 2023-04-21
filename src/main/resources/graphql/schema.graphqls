@@ -7,6 +7,13 @@ type Query {
     playerStatsById(id: ID!): PlayerStats
     playerStatsByPlayerId(id: ID!): PlayerStats
     playerStatsByPlayerName(name: String!): PlayerStats
+
+    topPlayersByWins(limit: Int): [Player]
+    topPlayersByLosses(limit: Int): [Player]
+    topPlayersByKills(limit: Int): [Player]
+    topPlayersByDeaths(limit: Int): [Player]
+    topPlayersByAssists(limit: Int): [Player]
+    topPlayersByMoney(limit: Int): [Player]
 }
 
 type Mutation {
@@ -27,6 +34,7 @@ type Player {
 
 type PlayerStats {
     id: ID!
+    player: Player!
     wins: Int!
     losses: Int!
     kills: Int!

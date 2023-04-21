@@ -25,7 +25,7 @@ public class PlayerMutator {
 
     @MutationMapping
     public Player updatePlayer(@Argument Long id, @Argument String name) {
-        Player player = playerService.getPlayer(id).orElseThrow();
+        Player player = playerService.getPlayerById(id).orElseThrow();
         player.setName(name);
 
         return playerService.updatePlayer(player);

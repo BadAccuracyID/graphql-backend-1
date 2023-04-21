@@ -69,31 +69,49 @@ public class PlayerStatsService {
     }
 
     public PlayerStatsPage getTopPlayersByWins(Integer pageNumber, Integer limit) {
+        pageNumber = pageNumber == null ? 0 : pageNumber;
+        limit = limit == null ? 10 : limit;
+
         Page<PlayerStats> page = playerStatsRepository.findTopByOrderByWinsDesc(PageRequest.of(pageNumber, limit));
         return new PlayerStatsPage(page.getContent(), page.getTotalElements());
     }
 
     public PlayerStatsPage getTopPlayersByLosses(Integer pageNumber, Integer limit) {
+        pageNumber = pageNumber == null ? 0 : pageNumber;
+        limit = limit == null ? 10 : limit;
+
         Page<PlayerStats> page = playerStatsRepository.findTopByOrderByLossesDesc(PageRequest.of(pageNumber, limit));
         return new PlayerStatsPage(page.getContent(), page.getTotalElements());
     }
 
     public PlayerStatsPage getTopPlayersByKills(Integer pageNumber, Integer limit) {
+        pageNumber = pageNumber == null ? 0 : pageNumber;
+        limit = limit == null ? 10 : limit;
+
         Page<PlayerStats> page = playerStatsRepository.findTopByOrderByKillsDesc(PageRequest.of(pageNumber, limit));
         return new PlayerStatsPage(page.getContent(), page.getTotalElements());
     }
 
     public PlayerStatsPage getTopPlayersByDeaths(Integer pageNumber, Integer limit) {
+        pageNumber = pageNumber == null ? 0 : pageNumber;
+        limit = limit == null ? 10 : limit;
+
         Page<PlayerStats> page = playerStatsRepository.findTopByOrderByDeathsDesc(PageRequest.of(pageNumber, limit));
         return new PlayerStatsPage(page.getContent(), page.getTotalElements());
     }
 
     public PlayerStatsPage getTopPlayersByAssists(Integer pageNumber, Integer limit) {
+        pageNumber = pageNumber == null ? 0 : pageNumber;
+        limit = limit == null ? 10 : limit;
+
         Page<PlayerStats> page = playerStatsRepository.findTopByOrderByAssistsDesc(PageRequest.of(pageNumber, limit));
         return new PlayerStatsPage(page.getContent(), page.getTotalElements());
     }
 
     public PlayerStatsPage getTopPlayersByMoney(Integer pageNumber, Integer limit) {
+        pageNumber = pageNumber == null ? 0 : pageNumber;
+        limit = limit == null ? 10 : limit;
+
         Page<PlayerStats> page = playerStatsRepository.findTopByOrderByMoneyDesc(PageRequest.of(pageNumber, limit));
         return new PlayerStatsPage(page.getContent(), page.getTotalElements());
     }

@@ -1,6 +1,5 @@
 package net.slc.ef.qualification.react.graphqlserver.repository;
 
-import net.slc.ef.qualification.react.graphqlserver.model.Player;
 import net.slc.ef.qualification.react.graphqlserver.model.PlayerStatistics;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

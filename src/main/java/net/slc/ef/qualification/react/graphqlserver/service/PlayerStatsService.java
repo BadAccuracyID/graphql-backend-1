@@ -42,10 +42,8 @@ public class PlayerStatsService {
 
     @Transactional
     public PlayerStats updatePlayerStats(Long playerId, Integer wins, Integer losses, Integer kills, Integer deaths, Integer assists, Integer money) {
-        Player player = playerRepository.findById(playerId)
-                .orElseThrow(() -> new IllegalArgumentException("Player not found with id: " + playerId));
+        PlayerStats stats = getOrCreatePlayerStats(playerId);
 
-        PlayerStats stats = player.getStats();
         if (wins != null) stats.setWins(wins);
         if (losses != null) stats.setLosses(losses);
         if (kills != null) stats.setKills(kills);
@@ -58,10 +56,8 @@ public class PlayerStatsService {
 
     @Transactional
     public PlayerStats resetPlayerStats(Long playerId) {
-        Player player = playerRepository.findById(playerId)
-                .orElseThrow(() -> new IllegalArgumentException("Player not found with id: " + playerId));
+        PlayerStats stats = getOrCreatePlayerStats(playerId);
 
-        PlayerStats stats = player.getStats();
         stats.setWins(0);
         stats.setLosses(0);
         stats.setKills(0);
@@ -100,5 +96,19 @@ public class PlayerStatsService {
     public PlayerStatsPage getTopPlayersByMoney(Integer pageNumber, Integer limit) {
         Page<PlayerStats> page = playerStatsRepository.findTopByOrderByMoneyDesc(PageRequest.of(pageNumber, limit));
         return new PlayerStatsPage(page.getContent(), page.getTotalElements());
+    }
+
+    private PlayerStats getOrCreatePlayerStats(Long playerId) {
+        Player player = playerRepository.findById(playerId)
+                .orElseThrow(() -> new IllegalArgumentException("Player not found with id: " + playerId));
+
+        PlayerStats stats = player.getStats();
+        if (stats == null) {
+            stats = new PlayerStats();
+            stats.setPlayer(player);
+            player.setStats(stats);
+        }
+
+        return stats;
     }
 }

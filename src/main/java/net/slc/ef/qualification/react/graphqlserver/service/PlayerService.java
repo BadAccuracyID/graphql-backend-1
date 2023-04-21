@@ -2,74 +2,59 @@ package net.slc.ef.qualification.react.graphqlserver.service;
 
 import jakarta.transaction.Transactional;
 import net.slc.ef.qualification.react.graphqlserver.model.Player;
-import net.slc.ef.qualification.react.graphqlserver.model.PlayerStatistics;
 import net.slc.ef.qualification.react.graphqlserver.repository.PlayerRepository;
-import net.slc.ef.qualification.react.graphqlserver.repository.PlayerStatisticsRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PlayerService {
 
     private final PlayerRepository playerRepository;
-    private final PlayerStatisticsRepository statisticsRepository;
 
-    public PlayerService(PlayerRepository playerRepository, PlayerStatisticsRepository statisticsRepository) {
+    public PlayerService(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
-        this.statisticsRepository = statisticsRepository;
     }
 
-    @Transactional
-    public Iterable<Player> getAllPlayers() {
+    public List<Player> getPlayers() {
         return playerRepository.findAll();
     }
 
-    @Transactional
     public Optional<Player> getPlayerById(Long id) {
-        // retrieve player from database
-        Player player = playerRepository.findById(id).orElse(null);
-        if (player == null) {
-            return Optional.empty();
-        }
-
-        // retrieve player statistics from database
-        PlayerStatistics playerStatistics = statisticsRepository.findPlayerStatisticsByPlayerId(player.getId())
-                .orElseGet(() -> {
-                    PlayerStatistics statistics = new PlayerStatistics();
-                    statistics.setPlayer(player);
-                    return statisticsRepository.save(statistics);
-                });
-        player.setPlayerStatistics(playerStatistics); // add player statistics to player
-
-        return Optional.of(player);
+        return playerRepository.findById(id);
     }
 
-
-    @Transactional
-    public Player getPlayerByName(String name) {
-        return playerRepository.findPlayerByName(name);
+    public Optional<Player> getPlayerByName(String name) {
+        return playerRepository.findByName(name);
     }
 
     @Transactional
-    public Player createPlayer(Player player) {
+    public Player addPlayer(String name) {
+        Player player = new Player();
+        player.setName(name);
         return playerRepository.save(player);
     }
 
     @Transactional
-    public Player updatePlayer(Player player) {
+    public Player updatePlayer(Long id, String name) {
+        Player player = playerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Player not found with id: " + id));
+        player.setName(name);
         return playerRepository.save(player);
     }
 
     @Transactional
-    public Long deletePlayer(Long id) {
+    public Long removePlayer(Long id) {
         playerRepository.deleteById(id);
         return id;
     }
 
     @Transactional
-    public String deletePlayerByName(String name) {
-        playerRepository.deletePlayerByName(name);
-        return name;
+    public Long removePlayerByName(String name) {
+        Player player = playerRepository.findByName(name)
+                .orElseThrow(() -> new IllegalArgumentException("Player not found with name: " + name));
+        playerRepository.deleteById(player.getId());
+        return player.getId();
     }
 }

@@ -1,8 +1,8 @@
 package net.slc.ef.qualification.react.graphqlserver.controller.playerstats;
 
-import net.slc.ef.qualification.react.graphqlserver.model.Player;
-import net.slc.ef.qualification.react.graphqlserver.model.PlayerStatistics;
-import net.slc.ef.qualification.react.graphqlserver.service.PlayerStatisticsService;
+import net.slc.ef.qualification.react.graphqlserver.model.PlayerStats;
+import net.slc.ef.qualification.react.graphqlserver.model.PlayerStatsPage;
+import net.slc.ef.qualification.react.graphqlserver.service.PlayerStatsService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
@@ -12,34 +12,59 @@ import java.util.Optional;
 @Controller
 public class PlayerStatisticsQuery {
 
-    private final PlayerStatisticsService playerStatisticsService;
+    private final PlayerStatsService playerStatsService;
 
-    public PlayerStatisticsQuery(PlayerStatisticsService playerStatisticsService) {
-        this.playerStatisticsService = playerStatisticsService;
+    public PlayerStatisticsQuery(PlayerStatsService playerStatsService) {
+        this.playerStatsService = playerStatsService;
     }
 
     @QueryMapping
-    public Iterable<PlayerStatistics> playerStats() {
-        return playerStatisticsService.getAllPlayerStatistics();
+    public Iterable<PlayerStats> playerStats() {
+        return playerStatsService.getPlayerStats();
     }
 
     @QueryMapping
-    public Iterable<Player> topPlayersByWins(@Argument int limit) {
-        return playerStatisticsService.getTopPlayersByWins(limit);
+    public PlayerStatsPage topPlayersByWins(@Argument Integer pageNumber, @Argument Integer limit) {
+        return playerStatsService.getTopPlayersByWins(pageNumber, limit);
     }
 
     @QueryMapping
-    public Optional<PlayerStatistics> playerStatsById(@Argument Long id) {
-        return playerStatisticsService.getPlayerStatistics(id);
+    public PlayerStatsPage topPlayersByLosses(@Argument Integer pageNumber, @Argument Integer limit) {
+        return playerStatsService.getTopPlayersByLosses(pageNumber, limit);
     }
 
     @QueryMapping
-    public Optional<PlayerStatistics> playerStatsByPlayerId(@Argument Long id) {
-        return playerStatisticsService.getPlayerStatisticsByPlayerId(id);
+    public PlayerStatsPage topPlayersByKills(@Argument Integer pageNumber, @Argument Integer limit) {
+        return playerStatsService.getTopPlayersByKills(pageNumber, limit);
     }
 
     @QueryMapping
-    public Optional<PlayerStatistics> playerStatsByPlayerName(@Argument String name) {
-        return playerStatisticsService.getPlayerStatisticsByPlayerName(name);
+    public PlayerStatsPage topPlayersByDeaths(@Argument Integer pageNumber, @Argument Integer limit) {
+        return playerStatsService.getTopPlayersByDeaths(pageNumber, limit);
+    }
+
+    @QueryMapping
+    public PlayerStatsPage topPlayersByAssists(@Argument Integer pageNumber, @Argument Integer limit) {
+        return playerStatsService.getTopPlayersByAssists(pageNumber, limit);
+    }
+
+    @QueryMapping
+    public PlayerStatsPage topPlayersByMoney(@Argument Integer pageNumber, @Argument Integer limit) {
+        return playerStatsService.getTopPlayersByMoney(pageNumber, limit);
+    }
+
+    @QueryMapping
+    public Optional<PlayerStats> playerStatsById(@Argument Long id) {
+        return playerStatsService.getPlayerStatsById(id);
+    }
+
+    @QueryMapping
+    public Optional<PlayerStats> playerStatsByPlayerId(@Argument Long id) {
+        return playerStatsService.getPlayerStatsByPlayerId(id);
+    }
+
+    @QueryMapping
+    public Optional<PlayerStats> playerStatsByPlayerName(@Argument String name) {
+        return playerStatsService.getPlayerStatsByPlayerName(name);
     }
 }

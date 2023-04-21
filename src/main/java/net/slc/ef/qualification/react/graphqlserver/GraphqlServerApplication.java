@@ -1,9 +1,9 @@
 package net.slc.ef.qualification.react.graphqlserver;
 
 import net.slc.ef.qualification.react.graphqlserver.model.Player;
-import net.slc.ef.qualification.react.graphqlserver.model.PlayerStatistics;
+import net.slc.ef.qualification.react.graphqlserver.model.PlayerStats;
 import net.slc.ef.qualification.react.graphqlserver.service.PlayerService;
-import net.slc.ef.qualification.react.graphqlserver.service.PlayerStatisticsService;
+import net.slc.ef.qualification.react.graphqlserver.service.PlayerStatsService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,73 +17,73 @@ public class GraphqlServerApplication {
     }
 
     @Bean
-    protected ApplicationRunner init(PlayerService playerService, PlayerStatisticsService playerStatisticsService) {
+    protected ApplicationRunner init(PlayerService playerService, PlayerStatsService playerStatsService) {
         return args -> {
-            Player player = new Player();
-            player.setName("BadAccuracyID");
-            Long id = playerService.createPlayer(player).getId();
-
-            PlayerStatistics playerStatistics = playerStatisticsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
-            playerStatistics.setPlayer(player);
-            playerStatistics.setWins(100);
-            playerStatistics.setLosses(18);
-            playerStatistics.setKills(1000);
-            playerStatistics.setDeaths(200);
-            playerStatistics.setAssists(500);
-            playerStatistics.setMoney(100000);
-            playerStatisticsService.updatePlayerStatistics(playerStatistics);
-
-            player = new Player();
-            player.setName("sh_likes_to_win");
-            id = playerService.createPlayer(player).getId();
-
-            playerStatistics = playerStatisticsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
-            playerStatistics.setWins(1000);
-            playerStatistics.setLosses(1);
-            playerStatistics.setKills(10000);
-            playerStatistics.setDeaths(2000);
-            playerStatistics.setAssists(5000);
-            playerStatistics.setMoney(1000000);
-            playerStatisticsService.updatePlayerStatistics(playerStatistics);
-
-            player = new Player();
-            player.setName("FlxC4t");
-            id = playerService.createPlayer(player).getId();
-
-            playerStatistics = playerStatisticsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
-            playerStatistics.setWins(84);
-            playerStatistics.setLosses(16);
-            playerStatistics.setKills(5437);
-            playerStatistics.setDeaths(1234);
-            playerStatistics.setAssists(2345);
-            playerStatistics.setMoney(1000);
-            playerStatisticsService.updatePlayerStatistics(playerStatistics);
-
-            player = new Player();
-            player.setName("sh_likes_to_lose");
-            id = playerService.createPlayer(player).getId();
-
-            playerStatistics = playerStatisticsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
-            playerStatistics.setWins(1);
-            playerStatistics.setLosses(1000);
-            playerStatistics.setKills(2000);
-            playerStatistics.setDeaths(10000);
-            playerStatistics.setAssists(5000);
-            playerStatistics.setMoney(1000000);
-            playerStatisticsService.updatePlayerStatistics(playerStatistics);
-
-            player = new Player();
-            player.setName("elseif_condition");
-            id = playerService.createPlayer(player).getId();
-
-            playerStatistics = playerStatisticsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
-            playerStatistics.setWins(100);
-            playerStatistics.setLosses(100);
-            playerStatistics.setKills(1000);
-            playerStatistics.setDeaths(1000);
-            playerStatistics.setAssists(1000);
-            playerStatistics.setMoney(100000);
-            playerStatisticsService.updatePlayerStatistics(playerStatistics);
+//            Player player = new Player();
+//            player.setName("BadAccuracyID");
+//            Long id = playerService.addPlayer("BadAccuracyID").getId();
+//
+//            PlayerStats playerStats = playerStatsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
+//            playerStats.setPlayer(player);
+//            playerStats.setWins(100);
+//            playerStats.setLosses(18);
+//            playerStats.setKills(1000);
+//            playerStats.setDeaths(200);
+//            playerStats.setAssists(500);
+//            playerStats.setMoney(100000);
+//            playerStatsService.updatePlayerStatistics(playerStats);
+//
+//            player = new Player();
+//            player.setName("sh_likes_to_win");
+//            id = playerService.createPlayer(player).getId();
+//
+//            playerStats = playerStatsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
+//            playerStats.setWins(1000);
+//            playerStats.setLosses(1);
+//            playerStats.setKills(10000);
+//            playerStats.setDeaths(2000);
+//            playerStats.setAssists(5000);
+//            playerStats.setMoney(1000000);
+//            playerStatsService.updatePlayerStatistics(playerStats);
+//
+//            player = new Player();
+//            player.setName("FlxC4t");
+//            id = playerService.createPlayer(player).getId();
+//
+//            playerStats = playerStatsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
+//            playerStats.setWins(84);
+//            playerStats.setLosses(16);
+//            playerStats.setKills(5437);
+//            playerStats.setDeaths(1234);
+//            playerStats.setAssists(2345);
+//            playerStats.setMoney(1000);
+//            playerStatsService.updatePlayerStatistics(playerStats);
+//
+//            player = new Player();
+//            player.setName("sh_likes_to_lose");
+//            id = playerService.createPlayer(player).getId();
+//
+//            playerStats = playerStatsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
+//            playerStats.setWins(1);
+//            playerStats.setLosses(1000);
+//            playerStats.setKills(2000);
+//            playerStats.setDeaths(10000);
+//            playerStats.setAssists(5000);
+//            playerStats.setMoney(1000000);
+//            playerStatsService.updatePlayerStatistics(playerStats);
+//
+//            player = new Player();
+//            player.setName("elseif_condition");
+//            id = playerService.createPlayer(player).getId();
+//
+//            playerStats = playerStatsService.getPlayerStatisticsByPlayerId(id).orElseThrow();
+//            playerStats.setWins(100);
+//            playerStats.setLosses(100);
+//            playerStats.setKills(1000);
+//            playerStats.setDeaths(1000);
+//            playerStats.setAssists(1000);
+//            playerStats.setMoney(100000);
+//            playerStatsService.updatePlayerStatistics(playerStats);
         };
     }
 }

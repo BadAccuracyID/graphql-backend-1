@@ -1,53 +1,28 @@
 package net.slc.ef.qualification.react.graphqlserver.controller.playerstats;
 
-import net.slc.ef.qualification.react.graphqlserver.model.PlayerStatistics;
-import net.slc.ef.qualification.react.graphqlserver.service.PlayerStatisticsService;
-import org.springframework.graphql.data.method.annotation.Arguments;
+import net.slc.ef.qualification.react.graphqlserver.model.PlayerStats;
+import net.slc.ef.qualification.react.graphqlserver.service.PlayerStatsService;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.stereotype.Controller;
-
-import java.util.Map;
 
 @Controller
 public class PlayerStatisticsMutator {
 
-    private final PlayerStatisticsService playerStatisticsService;
+    private final PlayerStatsService playerStatsService;
 
-    public PlayerStatisticsMutator(PlayerStatisticsService playerStatisticsService) {
-        this.playerStatisticsService = playerStatisticsService;
+    public PlayerStatisticsMutator(PlayerStatsService playerStatsService) {
+        this.playerStatsService = playerStatsService;
     }
 
     @MutationMapping
-    public PlayerStatistics updatePlayerStats(@Arguments Map<String, Object> args) {
-        long playerId = Long.parseLong(args.get("playerId").toString());
-        PlayerStatistics playerStatistics = playerStatisticsService.getPlayerStatisticsByPlayerId(playerId).orElseThrow();
-
-        if (args.containsKey("wins"))
-            playerStatistics.setWins(Integer.parseInt(args.get("wins").toString()));
-        if (args.containsKey("losses"))
-            playerStatistics.setLosses(Integer.parseInt(args.get("losses").toString()));
-        if (args.containsKey("kills"))
-            playerStatistics.setKills(Integer.parseInt(args.get("kills").toString()));
-        if (args.containsKey("deaths"))
-            playerStatistics.setDeaths(Integer.parseInt(args.get("deaths").toString()));
-        if (args.containsKey("assists"))
-            playerStatistics.setAssists(Integer.parseInt(args.get("assists").toString()));
-        if (args.containsKey("money"))
-            playerStatistics.setMoney(Integer.parseInt(args.get("money").toString()));
-
-        return playerStatisticsService.updatePlayerStatistics(playerStatistics);
+    // Long playerId, Integer wins, Integer losses, Integer kills, Integer deaths, Integer assists, Integer money
+    public PlayerStats updatePlayerStats(@Argument Long playerId, @Argument Integer wins, @Argument Integer losses, @Argument Integer kills, @Argument Integer deaths, @Argument Integer assists, @Argument Integer money) {
+        return playerStatsService.updatePlayerStats(playerId, wins, losses, kills, deaths, assists, money);
     }
 
     @MutationMapping
-    public PlayerStatistics resetPlayerStats(@Arguments Map<String, Object> args) {
-        PlayerStatistics playerStatistics = playerStatisticsService.getPlayerStatistics((Long) args.get("id")).orElseThrow();
-        playerStatistics.setWins(0);
-        playerStatistics.setLosses(0);
-        playerStatistics.setKills(0);
-        playerStatistics.setDeaths(0);
-        playerStatistics.setAssists(0);
-        playerStatistics.setMoney(0);
-
-        return playerStatisticsService.updatePlayerStatistics(playerStatistics);
+    public PlayerStats resetPlayerStats(@Argument Long playerId) {
+        return playerStatsService.resetPlayerStats(playerId);
     }
 }

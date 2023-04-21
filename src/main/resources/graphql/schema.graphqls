@@ -1,6 +1,6 @@
 type Query {
     players: [Player]
-    player(id: ID!): Player
+    playerById(id: ID!): Player
     playerByName(name: String!): Player
 
     playerStats: [PlayerStats]
@@ -8,12 +8,12 @@ type Query {
     playerStatsByPlayerId(id: ID!): PlayerStats
     playerStatsByPlayerName(name: String!): PlayerStats
 
-    topPlayersByWins(limit: Int): [Player]
-    topPlayersByLosses(limit: Int): [Player]
-    topPlayersByKills(limit: Int): [Player]
-    topPlayersByDeaths(limit: Int): [Player]
-    topPlayersByAssists(limit: Int): [Player]
-    topPlayersByMoney(limit: Int): [Player]
+    topPlayersByWins(pageNumber: Int, limit: Int): PlayerStatsPage
+    topPlayersByLosses(pageNumber: Int, limit: Int): PlayerStatsPage
+    topPlayersByKills(pageNumber: Int, limit: Int): PlayerStatsPage
+    topPlayersByDeaths(pageNumber: Int, limit: Int): PlayerStatsPage
+    topPlayersByAssists(pageNumber: Int, limit: Int): PlayerStatsPage
+    topPlayersByMoney(pageNumber: Int, limit: Int): PlayerStatsPage
 }
 
 type Mutation {
@@ -34,11 +34,16 @@ type Player {
 
 type PlayerStats {
     id: ID!
-    player: Player!
     wins: Int!
     losses: Int!
     kills: Int!
     deaths: Int!
     assists: Int!
     money: Int!
+    player: Player!
+}
+
+type PlayerStatsPage {
+    items: [PlayerStats]
+    totalCount: Int
 }

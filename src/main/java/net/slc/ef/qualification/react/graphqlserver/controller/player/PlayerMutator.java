@@ -17,28 +17,22 @@ public class PlayerMutator {
 
     @MutationMapping
     public Player addPlayer(@Argument String name) {
-        Player player = new Player();
-        player.setName(name);
-
-        return playerService.createPlayer(player);
+        return playerService.addPlayer(name);
     }
 
     @MutationMapping
     public Player updatePlayer(@Argument Long id, @Argument String name) {
-        Player player = playerService.getPlayerById(id).orElseThrow();
-        player.setName(name);
-
-        return playerService.updatePlayer(player);
+        return playerService.updatePlayer(id, name);
     }
 
     @MutationMapping
     public Long removePlayer(@Argument Long id) {
-        return playerService.deletePlayer(id);
+        return playerService.removePlayer(id);
     }
 
     @MutationMapping
-    public String removePlayerByName(@Argument String name) {
-        return playerService.deletePlayerByName(name);
+    public Long removePlayerByName(@Argument String name) {
+        return playerService.removePlayerByName(name);
     }
 
 }

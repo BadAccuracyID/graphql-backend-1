@@ -1,12 +1,12 @@
 package net.slc.ef.qualification.react.graphqlserver.repository;
 
 import net.slc.ef.qualification.react.graphqlserver.model.Player;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PlayerRepository extends CrudRepository<Player, Long> {
+import java.util.Optional;
 
-    Player findPlayerByName(String name);
+public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-    void deletePlayerByName(String name);
+    Optional<Player> findByName(String name);
 
 }

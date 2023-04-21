@@ -4,18 +4,23 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Entity
 @Getter
 @Setter
-public class Player {
+@Table(name = "player")
+public class Player implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToOne(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private PlayerStatistics playerStatistics;
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
+    private PlayerStats stats;
 
 
 }

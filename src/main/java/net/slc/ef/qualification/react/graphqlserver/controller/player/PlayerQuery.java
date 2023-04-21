@@ -19,16 +19,16 @@ public class PlayerQuery {
 
     @QueryMapping
     public Iterable<Player> players() {
-        return playerService.getAllPlayers();
+        return playerService.getPlayers();
     }
 
     @QueryMapping
-    public Optional<Player> player(@Argument Long id) {
+    public Optional<Player> playerById(@Argument Long id) {
         return playerService.getPlayerById(id);
     }
 
     @QueryMapping
-    public Player playerByName(@Argument String name) {
+    public Optional<Player> playerByName(@Argument String name) {
         return playerService.getPlayerByName(name);
     }
 }

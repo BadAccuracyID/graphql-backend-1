@@ -19,8 +19,8 @@ public class PlayerStatisticsQuery {
     }
 
     @QueryMapping
-    public Iterable<PlayerStats> playerStats() {
-        return playerStatsService.getPlayerStats();
+    public PlayerStatsPage playerStats(@Argument Integer pageNumber, @Argument Integer limit) {
+        return playerStatsService.getPlayerStats(pageNumber, limit);
     }
 
     @QueryMapping

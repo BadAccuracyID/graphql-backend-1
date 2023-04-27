@@ -10,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,8 +23,12 @@ public class PlayerStatsService {
         this.playerStatsRepository = playerStatsRepository;
     }
 
-    public List<PlayerStats> getPlayerStats() {
-        return playerStatsRepository.findAll();
+    public PlayerStatsPage getPlayerStats(Integer pageNumber, Integer limit) {
+        pageNumber = pageNumber == null ? 0 : pageNumber;
+        limit = limit == null ? 10 : limit;
+
+        Page<PlayerStats> page = playerStatsRepository.findAll(PageRequest.of(pageNumber, limit));
+        return new PlayerStatsPage(page.getContent(), page.getTotalElements());
     }
 
     public Optional<PlayerStats> getPlayerStatsById(Long id) {

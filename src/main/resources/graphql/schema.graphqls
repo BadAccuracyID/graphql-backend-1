@@ -3,7 +3,7 @@ type Query {
     playerById(id: ID!): Player
     playerByName(name: String!): Player
 
-    playerStats: [PlayerStats]
+    playerStats(pageNumber: Int, limit: Int): PlayerStatsPage
     playerStatsById(id: ID!): PlayerStats
     playerStatsByPlayerId(id: ID!): PlayerStats
     playerStatsByPlayerName(name: String!): PlayerStats

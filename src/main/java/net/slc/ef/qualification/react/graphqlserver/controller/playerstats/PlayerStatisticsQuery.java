@@ -6,10 +6,12 @@ import net.slc.ef.qualification.react.graphqlserver.service.PlayerStatsService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Optional;
 
 @Controller
+@CrossOrigin
 public class PlayerStatisticsQuery {
 
     private final PlayerStatsService playerStatsService;

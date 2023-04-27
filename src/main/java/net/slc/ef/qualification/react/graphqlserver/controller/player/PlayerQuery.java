@@ -1,6 +1,7 @@
 package net.slc.ef.qualification.react.graphqlserver.controller.player;
 
 import net.slc.ef.qualification.react.graphqlserver.model.Player;
+import net.slc.ef.qualification.react.graphqlserver.model.PlayerPage;
 import net.slc.ef.qualification.react.graphqlserver.service.PlayerService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -18,8 +19,8 @@ public class PlayerQuery {
     }
 
     @QueryMapping
-    public Iterable<Player> players() {
-        return playerService.getPlayers();
+    public PlayerPage players(@Argument Integer pageNumber, @Argument Integer limit) {
+        return playerService.getPlayers(pageNumber, limit);
     }
 
     @QueryMapping

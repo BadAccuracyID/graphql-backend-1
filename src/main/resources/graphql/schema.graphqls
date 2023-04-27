@@ -1,5 +1,5 @@
 type Query {
-    players: [Player]
+    players(pageNumber: Int, limit: Int): PlayerPage
     playerById(id: ID!): Player
     playerByName(name: String!): Player
 
@@ -30,6 +30,11 @@ type Player {
     id: ID!
     name: String!
     stats: PlayerStats
+}
+
+type PlayerPage {
+    items: [Player]
+    totalCount: Int
 }
 
 type PlayerStats {

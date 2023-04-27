@@ -2,7 +2,9 @@ package net.slc.ef.qualification.react.graphqlserver.service;
 
 import jakarta.transaction.Transactional;
 import net.slc.ef.qualification.react.graphqlserver.model.Player;
+import net.slc.ef.qualification.react.graphqlserver.model.PlayerPage;
 import net.slc.ef.qualification.react.graphqlserver.repository.PlayerRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +19,14 @@ public class PlayerService {
         this.playerRepository = playerRepository;
     }
 
-    public List<Player> getPlayers() {
-        return playerRepository.findAll();
+    public PlayerPage getPlayers(Integer pageNumber, Integer limit) {
+        pageNumber = pageNumber == null ? 0 : pageNumber;
+        limit = limit == null ? 10 : limit;
+
+        List<Player> players = playerRepository.findAll(PageRequest.of(pageNumber, limit)).toList();
+        Long total = playerRepository.count();
+
+        return new PlayerPage(players, total);
     }
 
     public Optional<Player> getPlayerById(Long id) {

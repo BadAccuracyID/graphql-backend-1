@@ -17,8 +17,8 @@ type Query {
 }
 
 type Mutation {
-    addPlayer(name: String!): Player
-    updatePlayer(id: ID!, name: String!): Player
+    addPlayer(name: String!, motto: String!, avatar: String!, instagram: String!): Player
+    updatePlayer(id: ID!, name: String!, motto: String!, avatar: String!, instagram: String!): Player
     removePlayer(id: ID!): ID
     removePlayerByName(name: String!): ID
 
@@ -29,6 +29,9 @@ type Mutation {
 type Player {
     id: ID!
     name: String!
+    motto: String!
+    avatar: String!
+    instagram: String!
     stats: PlayerStats
 }
 

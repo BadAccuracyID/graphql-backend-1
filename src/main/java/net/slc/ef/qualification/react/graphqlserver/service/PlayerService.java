@@ -36,17 +36,23 @@ public class PlayerService {
     }
 
     @Transactional
-    public Player addPlayer(String name) {
+    public Player addPlayer(String name, String motto, String avatar, String instagram) {
         Player player = new Player();
         player.setName(name);
+        player.setMotto(motto);
+        player.setAvatar(avatar);
+        player.setInstagram(instagram);
         return playerRepository.save(player);
     }
 
     @Transactional
-    public Player updatePlayer(Long id, String name) {
+    public Player updatePlayer(Long id, String name, String motto, String avatar, String instagram) {
         Player player = playerRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Player not found with id: " + id));
         player.setName(name);
+        player.setMotto(motto);
+        player.setAvatar(avatar);
+        player.setInstagram(instagram);
         return playerRepository.save(player);
     }
 

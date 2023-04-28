@@ -18,13 +18,13 @@ public class PlayerMutator {
     }
 
     @MutationMapping
-    public Player addPlayer(@Argument String name) {
-        return playerService.addPlayer(name);
+    public Player addPlayer(@Argument String name, @Argument String motto, @Argument String avatar, @Argument String instagram) {
+        return playerService.addPlayer(name, motto, avatar, instagram);
     }
 
     @MutationMapping
-    public Player updatePlayer(@Argument Long id, @Argument String name) {
-        return playerService.updatePlayer(id, name);
+    public Player updatePlayer(@Argument Long id, @Argument String name, @Argument String motto, @Argument String avatar, @Argument String instagram) {
+        return playerService.updatePlayer(id, name, motto, avatar, instagram);
     }
 
     @MutationMapping

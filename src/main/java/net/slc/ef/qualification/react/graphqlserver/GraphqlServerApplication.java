@@ -1,5 +1,6 @@
 package net.slc.ef.qualification.react.graphqlserver;
 
+import net.slc.ef.qualification.react.graphqlserver.model.Player;
 import net.slc.ef.qualification.react.graphqlserver.model.PlayerStats;
 import net.slc.ef.qualification.react.graphqlserver.service.PlayerService;
 import net.slc.ef.qualification.react.graphqlserver.service.PlayerStatsService;
@@ -18,12 +19,54 @@ public class GraphqlServerApplication {
     @Bean
     protected ApplicationRunner init(PlayerService playerService, PlayerStatsService playerStatsService) {
         return args -> {
-            playerService.addPlayer("BadAccuracyID");
-            playerService.addPlayer("sh_likes_to_win");
-            playerService.addPlayer("sh_likes_to_lose");
-            playerService.addPlayer("sh_likes_to_assist");
-            playerService.addPlayer("sh_likes_to_die");
-            playerService.addPlayer("sh_likes_to_kill");
+            Player newPlayer = Player.builder()
+                    .name("BadAccuracyID")
+                    .motto("Regretting is a waste of time.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2FLyraMS&w=256&q=75")
+                    .instagram("https://www.instagram.com/efrnnthel/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
+            newPlayer = Player.builder()
+                    .name("sh_likes_to_win")
+                    .motto("I'm not a hacker, I'm just good.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2FBlazePxly&w=256&q=75")
+                    .instagram("https://www.instagram.com/stefaniesheryl/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
+            newPlayer = Player.builder()
+                    .name("sh_likes_to_lose")
+                    .motto("I'm not good, I'm just a hacker.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2FFunaa&w=256&q=75")
+                    .instagram("https://www.instagram.com/stefaniesheryl/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
+            newPlayer = Player.builder()
+                    .name("sh_likes_to_assist")
+                    .motto("Assisting is a waste of time.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fnerozvox&w=256&q=75")
+                    .instagram("https://www.instagram.com/stefaniesheryl/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
+            newPlayer = Player.builder()
+                    .name("sh_likes_to_die")
+                    .motto("Dying is a waste of time.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2FKimRokSoo&w=256&q=75")
+                    .instagram("https://www.instagram.com/stefaniesheryl/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
+            newPlayer = Player.builder()
+                    .name("sh_likes_to_kill")
+                    .motto("Killing is a waste of time.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2FAfif87123&w=256&q=75")
+                    .instagram("https://www.instagram.com/stefaniesheryl/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
 
             playerService.getPlayerByName("BadAccuracyID").ifPresent(player -> {
                 PlayerStats playerStats = new PlayerStats();
@@ -35,6 +78,7 @@ public class GraphqlServerApplication {
                 playerStats.setAssists(500);
                 playerStats.setMoney(10000000);
                 playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
+
             });
 
             playerService.getPlayerByName("sh_likes_to_win").ifPresent(player -> {

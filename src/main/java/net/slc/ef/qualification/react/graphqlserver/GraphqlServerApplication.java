@@ -67,6 +67,45 @@ public class GraphqlServerApplication {
                     .build();
             playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
 
+            newPlayer = Player.builder()
+                    .name("TheSilentGamer")
+                    .motto("I let my actions speak for me.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fsilentgamerz&w=256&q=75")
+                    .instagram("https://www.instagram.com/thesilentgamer/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
+            newPlayer = Player.builder()
+                    .name("FastFingers")
+                    .motto("Speed is the key.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Ffastfingers&w=256&q=75")
+                    .instagram("https://www.instagram.com/fastfingers/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
+            newPlayer = Player.builder()
+                    .name("StrategistMaster")
+                    .motto("Strategy wins battles.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fstrategistmaster&w=256&q=75")
+                    .instagram("https://www.instagram.com/strategistmaster/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
+            newPlayer = Player.builder()
+                    .name("LuckyCharm")
+                    .motto("Luck favors the bold.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fluckycharm&w=256&q=75")
+                    .instagram("https://www.instagram.com/luckycharmgamer/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
+
+            newPlayer = Player.builder()
+                    .name("TheSneakyOne")
+                    .motto("You'll never see me coming.")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fthesneakyone&w=256&q=75")
+                    .instagram("https://www.instagram.com/thesneakyone/")
+                    .build();
+            playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
 
             playerService.getPlayerByName("BadAccuracyID").ifPresent(player -> {
                 PlayerStats playerStats = new PlayerStats();
@@ -78,7 +117,6 @@ public class GraphqlServerApplication {
                 playerStats.setAssists(500);
                 playerStats.setMoney(10000000);
                 playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
-
             });
 
             playerService.getPlayerByName("sh_likes_to_win").ifPresent(player -> {
@@ -138,6 +176,66 @@ public class GraphqlServerApplication {
                 playerStats.setDeaths(200);
                 playerStats.setAssists(1000);
                 playerStats.setMoney(100000);
+                playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
+            });
+
+            playerService.getPlayerByName("TheSilentGamer").ifPresent(player -> {
+                PlayerStats playerStats = new PlayerStats();
+                playerStats.setPlayer(player);
+                playerStats.setWins(250);
+                playerStats.setLosses(50);
+                playerStats.setKills(3000);
+                playerStats.setDeaths(500);
+                playerStats.setAssists(1500);
+                playerStats.setMoney(500000);
+                playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
+            });
+
+            playerService.getPlayerByName("FastFingers").ifPresent(player -> {
+                PlayerStats playerStats = new PlayerStats();
+                playerStats.setPlayer(player);
+                playerStats.setWins(300);
+                playerStats.setLosses(100);
+                playerStats.setKills(4000);
+                playerStats.setDeaths(700);
+                playerStats.setAssists(2000);
+                playerStats.setMoney(600000);
+                playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
+            });
+
+            playerService.getPlayerByName("StrategistMaster").ifPresent(player -> {
+                PlayerStats playerStats = new PlayerStats();
+                playerStats.setPlayer(player);
+                playerStats.setWins(500);
+                playerStats.setLosses(200);
+                playerStats.setKills(2500);
+                playerStats.setDeaths(1000);
+                playerStats.setAssists(4000);
+                playerStats.setMoney(800000);
+                playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
+            });
+
+            playerService.getPlayerByName("LuckyCharm").ifPresent(player -> {
+                PlayerStats playerStats = new PlayerStats();
+                playerStats.setPlayer(player);
+                playerStats.setWins(1000);
+                playerStats.setLosses(500);
+                playerStats.setKills(6000);
+                playerStats.setDeaths(3000);
+                playerStats.setAssists(1000);
+                playerStats.setMoney(2000000);
+                playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
+            });
+
+            playerService.getPlayerByName("TheSneakyOne").ifPresent(player -> {
+                PlayerStats playerStats = new PlayerStats();
+                playerStats.setPlayer(player);
+                playerStats.setWins(400);
+                playerStats.setLosses(300);
+                playerStats.setKills(5000);
+                playerStats.setDeaths(1500);
+                playerStats.setAssists(3000);
+                playerStats.setMoney(700000);
                 playerStatsService.updatePlayerStats(player.getId(), playerStats.getWins(), playerStats.getLosses(), playerStats.getKills(), playerStats.getDeaths(), playerStats.getAssists(), playerStats.getMoney());
             });
         };

@@ -70,7 +70,7 @@ public class GraphqlServerApplication {
             newPlayer = Player.builder()
                     .name("TheSilentGamer")
                     .motto("I let my actions speak for me.")
-                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fsilentgamerz&w=256&q=75")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2FNotch&w=256&q=75")
                     .instagram("https://www.instagram.com/thesilentgamer/")
                     .build();
             playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
@@ -78,7 +78,7 @@ public class GraphqlServerApplication {
             newPlayer = Player.builder()
                     .name("FastFingers")
                     .motto("Speed is the key.")
-                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Ffastfingers&w=256&q=75")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2FTechnoblade&w=256&q=75")
                     .instagram("https://www.instagram.com/fastfingers/")
                     .build();
             playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
@@ -86,7 +86,7 @@ public class GraphqlServerApplication {
             newPlayer = Player.builder()
                     .name("StrategistMaster")
                     .motto("Strategy wins battles.")
-                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fstrategistmaster&w=256&q=75")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fxqlv&w=256&q=75")
                     .instagram("https://www.instagram.com/strategistmaster/")
                     .build();
             playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
@@ -94,7 +94,7 @@ public class GraphqlServerApplication {
             newPlayer = Player.builder()
                     .name("LuckyCharm")
                     .motto("Luck favors the bold.")
-                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fluckycharm&w=256&q=75")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Famongus&w=256&q=75")
                     .instagram("https://www.instagram.com/luckycharmgamer/")
                     .build();
             playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
@@ -102,7 +102,7 @@ public class GraphqlServerApplication {
             newPlayer = Player.builder()
                     .name("TheSneakyOne")
                     .motto("You'll never see me coming.")
-                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2Fthesneakyone&w=256&q=75")
+                    .avatar("https://luckynetwork.net/_next/image?url=https%3A%2F%2Fmc-heads.net%2Favatar%2FTommyInnit&w=256&q=75")
                     .instagram("https://www.instagram.com/thesneakyone/")
                     .build();
             playerService.addPlayer(newPlayer.getName(), newPlayer.getMotto(), newPlayer.getAvatar(), newPlayer.getInstagram());
